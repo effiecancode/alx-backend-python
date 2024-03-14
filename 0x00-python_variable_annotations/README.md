@@ -1,3 +1,5 @@
+# PYTHON ANNOTATIONS
+
 * Python annotations, introduced in Python 3.0, allow developers to add metadata to functions, methods, classes, and modules. Annotations can be any arbitrary expressions and are stored in the __annotations__ attribute of the function, method, or class. Annotations can be used for various purposes, including type hinting, documentation, and runtime behavior modification. Here's a breakdown of Python annotations:
 
 * Type Hinting:
