@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
-"""
-Import wait_random from the prev python file  and write an async
-routin called wait_n that takes 2 int args. You will spawn
-wait_random n times with the specified max_delay
-"""
-
+"""An async function to execute multiple coroutines asynchronously"""
 import asyncio
-import typing
-wait_random = __import__('0-basic_async_syntax').wait_random
+from typing import List
+
+wait_random = __import__("0-basic_async_syntax").wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> typing.List[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    """an async function to return a list of delay times
+
+    Args:
+        n (int): number of function execution
+        max_dalay (int): max delay time
+
+    Returns:
+        List[float]: a list of random delay numbers
+
     """
-    function that returns the list of all the delays
-    (float values).The list shld be in ascending order
-    """
-    list_of_delays = []
-    for w in range(n):
-        delays = await wait_random(max_delay)
-        list_of_delays.append(delays)
-    return sorted(list_of_delays)
+    # Create list of courites objects execute n times
+    tasks = [asyncio.create_task(wait_random(max_delay)) for _ in range(n)]
+
+    # use asyncio.as_completed() function to process results in real time
+    return [await task for task in asyncio.as_completed(tasks)]
+
