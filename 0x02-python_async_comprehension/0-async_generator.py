@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""
-Asychronous coroutine that takes an integers args(max_delay)
-with a default of 10 named wait random that waits for a random
-delay btw 0 and max_delay(included and float vale) seconds and
-eventually returns it
-"""
-import random
+"""async basic syntax program"""
 import asyncio
+import random
 
 
 async def wait_random(max_delay: int = 10) -> float:
-    """
-    functions that return random float numbers
-    """
+    """An async function to return a random delay float
 
-    time_delayed = random.uniform(0, max_delay)
-    await asyncio.sleep(time_delayed)
-    return time_delayed
+    Args:
+        max_dalay (int): A max delay number parameter
+
+    Returns:
+        float: a random delay number
+
+    """
+    rand_num = random.random() * max_delay
+    await asyncio.sleep(rand_num)
+    return rand_num
