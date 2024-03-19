@@ -22,4 +22,3 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
 
     # use asyncio.as_completed() function to process results in real time
     return [await task for task in asyncio.as_completed(tasks)]
-
